@@ -3,6 +3,7 @@ package ma.enset.hospitalapp;
 import ma.enset.hospitalapp.entities.Patient;
 import ma.enset.hospitalapp.repository.PatientRepository;
 import ma.enset.hospitalapp.security.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,6 +32,7 @@ public class HospitalAppApplication {
         };
     }
 
+
     //@Bean
     CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager){
         PasswordEncoder passwordEncoder = passwordEncoder();
@@ -53,7 +55,7 @@ public class HospitalAppApplication {
         };
     }
 
-    @Bean
+    //@Bean
     CommandLineRunner commandLineRunnerUserDetails(AccountService accountService){
         return args -> {
             accountService.addNewRole("USER");
@@ -72,4 +74,6 @@ public class HospitalAppApplication {
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
 }
